@@ -13,10 +13,15 @@
             <p>blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. </p>
         </div>
 
+        
+        {% for one_question in questions %}
+        {{ one_question }}
         <div>
-            <p>published: 03.08.2017, 12:54</p>
-            <h2><a href="">Question 2</a></h2>
-            <p>blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah.</p>
+        <p>published: {{ one_question.published_date }}</p>
+        <h1><a href="">{{ one_question.title }}</a></h1>
+        <p>{{ one_question.text|linebreaksbr }}</p>
         </div>
+        {% endfor %}
+        
     </body>
 </html>
