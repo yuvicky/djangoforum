@@ -1,27 +1,13 @@
-<html>
-    <head>
-        <title>boldHER Forum</title>
-    </head>
-    <body>
-        <div>
-            <h1><a href="">boldHER Forum</a></h1>
-        </div>
+{% extends 'boldHER/base.html' %}
 
-        <div>
-            <p>published: 03.08.2017, 12:54</p>
-            <h2><a href="">Question 1</a></h2>
-            <p>blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. blah. </p>
+{% block content %}
+    {% for question in questions %}
+        <div class="question">
+            <div class="date">
+                {{ question.published_date }}
+            </div>
+            <h1><a href="{% url 'question_detail' pk=question.pk %}">{{ question.title }}</a></h1>
+            <p>{{ question.text|linebreaksbr }}</p>
         </div>
-
-        
-        {% for one_question in questions %}
-        {{ one_question }}
-        <div>
-        <p>published: {{ one_question.published_date }}</p>
-        <h1><a href="">{{ one_question.title }}</a></h1>
-        <p>{{ one_question.text|linebreaksbr }}</p>
-        </div>
-        {% endfor %}
-        
-    </body>
-</html>
+    {% endfor %}
+{% endblock %}

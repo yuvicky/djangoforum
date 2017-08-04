@@ -1,0 +1,15 @@
+{% extends 'boldHER/base.html' %}
+
+{% block content %}
+    <div class="question">
+    	<p>{{ question.category|linebreaksbr }}</p>
+        {% if question.published_date %}
+            <div class="date">
+                {{ question.published_date }}
+            </div>
+        {% endif %}
+        <h1>{{ question.title }}</h1>
+        <p>{{ question.author|linebreaksbr }}</p>
+        <h4>{{ question.question_text|linebreaksbr }}</p>
+    </div>
+{% endblock %}
