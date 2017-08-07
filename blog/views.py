@@ -4,6 +4,7 @@ from django.utils import timezone
 from .models import Question
 from django.shortcuts import render, get_object_or_404
 from .forms import QuestionForm
+from .forms import AnswerForm
 
 
 # Create your views here.
@@ -28,6 +29,20 @@ def question_new(request):
 		form = QuestionForm()
 	return render(request, 'boldHER/question_edit.html', {'form': form})
 
+
+def answer_new(request):
+	if request.method == "POST":
+		form = AnswerForm(request.POST)
+		if form.is_valid():
+			answer = form.save(commit=False)
+			answer.author = request.user
+			answer.published_date = timezone.now()
+			answer.save()
+			return redirect('answer_detail', pk=answer.pk)
+	else:
+		form = QuestionForm()
+	return render(request, 'boldHER/question_edit.html', {'form': form})
+
 def question_edit(request, pk):
     question = get_object_or_404(Question, pk=pk)
     if request.method == "POST":
@@ -42,4 +57,16 @@ def question_edit(request, pk):
         form = QuestionForm(instance=question)
     return render(request, 'boldHER/question_edit.html', {'form': form})
 
-
+def answer_edit(request, pk):
+    answer = get_object_or_404(Answer, pk=pk)
+    if request.method == "POST":
+        form = AnswerForm(request.POST, instance=answer)
+        if form.is_valid():
+            answer = form.save(commit=False)
+            answer.author = request.user
+            answer.published_date = timezone.now()
+            answer.save()
+            return redirect('answer_detail', pk=answer.pk)
+    else:
+        form = AnswerForm(instance=answer)
+    return render(request, 'boldHER/answer_edit.html', {'form': form})
