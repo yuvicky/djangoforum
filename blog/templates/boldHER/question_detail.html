@@ -9,8 +9,17 @@
             </div>
         {% endif %}
         <a class="btn btn-default" href="{% url 'question_edit' pk=question.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
-        <h1>{{ question.title }}</h1>
+        <h2>{{ question.title }}</h2>
         <p>{{ question.author|linebreaksbr }}</p>
         <h4>{{ question.question_text|linebreaksbr }}</p>
+        <a href="{% url 'answer_new' pk=question.pk %}">Add an answer</a>
+        
+            {% for answer in answers %}
+            <h3>{{ answer.author }}</h3>
+            <p>{{ answer.answer_text }}</p>
+            <h4>{{ answer.published_date }}</p>
+            {% endfor %}
+
+
     </div>
 {% endblock %}

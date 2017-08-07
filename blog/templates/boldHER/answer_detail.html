@@ -9,7 +9,7 @@
             </div>
         {% endif %}
         <a class="btn btn-default" href="{% url 'answer_edit' pk=answer.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
-        <h1>{{ answer.title }}</h1>
+        <h3>{{ answer.title }}</h3>
         <p>{{ answer.author|linebreaksbr }}</p>
         <h4>{{ answer.answer_text|linebreaksbr }}</p>
     </div>

@@ -26,7 +26,7 @@ class Question(models.Model):
 class Answer(models.Model):
     author = models.ForeignKey('auth.User')
     title = models.CharField(max_length=200)
-    question_text = models.TextField()
+    answer_text = models.TextField()
     published_date = models.DateTimeField(
             blank=True, null=True)
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
@@ -41,7 +41,7 @@ class Answer(models.Model):
 class Comment(models.Model):
     author = models.ForeignKey('auth.User')
     title = models.CharField(max_length=200)
-    question_text = models.TextField()
+    comment_text = models.TextField()
     published_date = models.DateTimeField(
             blank=True, null=True)
     answer = models.ForeignKey(Answer, on_delete=models.CASCADE)
