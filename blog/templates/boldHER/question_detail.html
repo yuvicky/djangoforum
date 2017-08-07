@@ -8,6 +8,7 @@
                 {{ question.published_date }}
             </div>
         {% endif %}
+        <a class="btn btn-default" href="{% url 'question_edit' pk=question.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
         <h1>{{ question.title }}</h1>
         <p>{{ question.author|linebreaksbr }}</p>
         <h4>{{ question.question_text|linebreaksbr }}</p>
