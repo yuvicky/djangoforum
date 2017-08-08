@@ -17,13 +17,18 @@ def question_detail(request, pk):
 def question_list(request):
 	abortion_category = Category.objects.filter(title="Abortion").first()
 	abortion_question = Question.objects.filter(category=abortion_category)
-	sexual_assault_category = Category.objects.filter(title="Sexual Assault").first()
-	sexual_assault_question = Question.objects.filter(category=sexual_assault_category)
+	domestic_violence_category = Category.objects.filter(title="Domestic Violence").first()
+	domestic_violence_question = Question.objects.filter(category=domestic_violence_category)
 	relationship_issue_category = Category.objects.filter(title="Relationship Issue")
 	relationship_issue_question = Question.objects.filter(category = relationship_issue_category)
+	sexism_category = Category.objects.filter(title="Sexism")
+	sexism_question = Question.objects.filter(category = sexism_category)
+	sexual_assault_category = Category.objects.filter(title="Sexual Assault").first()
+	sexual_assault_question = Question.objects.filter(category=sexual_assault_category)
+
 	return render(request, 'boldHER/question_list2.html',
-	{'abortion_question' : abortion_question, 'sexual_assault_question' : sexual_assault_question,
-    'relationship_issue_question' : relationship_issue_question})
+	{'abortion_question' : abortion_question, 'domestic_violence_question' : domestic_violence_question, 'sexual_assault_question' : sexual_assault_question,
+    'relationship_issue_question' : relationship_issue_question, 'sexism_question' : sexism_question})
 
 def question_new(request):
 	if request.method == "POST":
