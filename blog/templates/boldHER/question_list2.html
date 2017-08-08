@@ -12,6 +12,36 @@
         </div>
     {% endfor %}
 
+    <h1>Questions about: Domestic Violence</h1>
+    {% for question in domestic_violence_question %}
+        <div class="question">
+            <div class="date">
+                {{ question.published_date }}
+            </div>
+            <h1><a href="{% url 'question_detail' pk=question.pk %}">{{ question.title }}</a></h1>
+            <p>{{ question.text|linebreaksbr }}</p>
+        </div>
+
+    <h1>Questions about: Relationship Issue</h1>
+    {% for question in relationship_issue_question %}
+        <div class="question">
+            <div class="date">
+                {{ question.published_date }}
+            </div>
+            <h1><a href="{% url 'question_detail' pk=question.pk %}">{{ question.title }}</a></h1>
+            <p>{{ question.text|linebreaksbr }}</p>
+        </div>
+
+    <h1>Questions about: Sexism</h1>
+    {% for question in sexism_question %}
+        <div class="question">
+            <div class="date">
+                {{ question.published_date }}
+            </div>
+            <h1><a href="{% url 'question_detail' pk=question.pk %}">{{ question.title }}</a></h1>
+            <p>{{ question.text|linebreaksbr }}</p>
+        </div>
+
 	<h1>Questions about: Sexual Assault</h1>
     {% for question in sexual_assault_question %}
         <div class="question">
@@ -23,14 +53,6 @@
         </div>
     {% endfor %}
 
-    <h1>Questions about: Relationship Issue</h1>
-    {% for question in relationship_issue_question %}
-        <div class="question">
-            <div class="date">
-                {{ question.published_date }}
-            </div>
-            <h1><a href="{% url 'question_detail' pk=question.pk %}">{{ question.title }}</a></h1>
-            <p>{{ question.text|linebreaksbr }}</p>
-        </div>
+
     {% endfor %}
 {% endblock %}
